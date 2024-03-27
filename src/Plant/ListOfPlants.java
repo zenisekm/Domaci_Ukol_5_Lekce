@@ -33,17 +33,40 @@ public class ListOfPlants implements Serializable {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
             }
+        } catch (FileNotFoundException e) {
+            throw new PlantException("Soubor " + fileName + " nebyl nalezen\n!" + e.getLocalizedMessage());
         } catch (Exception e) {
-            throw new PlantException("Nastala chyba při práci se souborem");
+            throw new PlantException("Nastala chyba při práci se souborem: " + fileName + "\n" + e.getLocalizedMessage());
+        }
+    }
+
+        public void saveDataToFile(String fileName) throws PlantException {
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
+                for (Plant plant : plantList) {
+                    writer.println(plant.getName() + ","
+                            + plant.getNotes() + "," + plant.getPlanted() + "," + plant.getWatering() + ","
+                            + plant.getFrequencyOfWatering());
+                }
+            } catch (FileNotFoundException e) {
+                throw new PlantException("Soubor " + fileName + " nebyl nalezen\n!" + e.getLocalizedMessage());
+            } catch (IOException e) {
+                throw new PlantException("Chyba výstupu při zápisu do souboru" +fileName +"\n" + e.getLocalizedMessage());
+            }
         }
 
 
+    public void saveUpdatedListToFile(String fileName) throws PlantException {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
+            for (Plant plant : plantList) {
+                writer.println(plant.getName() + ","
+                        + plant.getNotes() + "," + plant.getPlanted() + "," + plant.getWatering() + ","
+                        + plant.getFrequencyOfWatering());
+            }
+        } catch (FileNotFoundException e) {
+            throw new PlantException("Soubor " + fileName + " nebyl nalezen\n!" + e.getLocalizedMessage());
+        } catch (IOException e) {
+            throw new PlantException("Chyba při zápisu aktualizovaného seznamu do souboru: " + e.getLocalizedMessage());
+        }
 
-
-
-
-
-
-
-    }
+}
 }

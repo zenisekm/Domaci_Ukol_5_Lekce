@@ -62,15 +62,9 @@ public class Plant {
             return watering;
         }
 
-    //    public void setWatering(LocalDate watering) {
-    //        this.watering = watering;
-    //    }
-
-
         public int getFrequencyOfWatering() {
             return frequencyOfWatering;
         }
-
 
         public String getWateringInfo() {
             LocalDate nextWatering = watering.plusDays(frequencyOfWatering);

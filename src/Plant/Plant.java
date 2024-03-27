@@ -62,13 +62,10 @@ public class Plant {
             return watering;
         }
 
-        public void setWatering(LocalDate watering) {
-            this.watering = watering;
-        }
+    //    public void setWatering(LocalDate watering) {
+    //        this.watering = watering;
+    //    }
 
-   //     public void setFrequencyOfWatering(int frequencyOfWatering) {
-   //         this.frequencyOfWatering = frequencyOfWatering;
-   //     }
 
         public int getFrequencyOfWatering() {
             return frequencyOfWatering;
@@ -89,6 +86,15 @@ public class Plant {
              }
              this.frequencyOfWatering = frequencyOfWatering;
          }
+
+         public void setWatering(LocalDate watering) throws PlantException {
+            if (watering.isBefore(planted)) {
+                throw new PlantException ("Watering day can't be before plant");
+            }
+            this.watering = watering;
+         }
+
+
 
 
 

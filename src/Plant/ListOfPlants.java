@@ -28,22 +28,22 @@ public class ListOfPlants implements Serializable {
         plantList.remove(plant);
     }
 
-
-    public void loadPlantsFromFile(String filename) throws PlantException {
-        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(filename))) {
-            plantList = (List<Plant>) inputStream.readObject();
-            System.out.println("List of plants loaded from file: " + filename);
-        } catch (FileNotFoundException e) {
-            throw new PlantException("File '" + filename + "' not found.");
-        } catch (IOException | ClassNotFoundException e) {
-            throw new PlantException("Error reading plants from file: " + e.getMessage());
+    public void loadDataFromFile(String fileName) throws PlantException {
+        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+            }
+        } catch (Exception e) {
+            throw new PlantException("Nastala chyba při práci se souborem");
         }
+
+
+
+
+
+
+
+
+
     }
-
-
-
-
-        };
-
-
-
+}

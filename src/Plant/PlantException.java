@@ -1,6 +1,6 @@
 package Plant;
 
-public class PlantException extends Plant {
+public class PlantException extends Exception {
     public PlantException(String message) {
         super(message);
     }

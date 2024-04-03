@@ -34,6 +34,7 @@ public class ListOfPlants implements Serializable {
         plantList.remove(plant);
     }
 
+
     public void loadDataFromFile(String fileName) throws PlantException {
         int lineCounter = 0;
         plantList.clear();
@@ -84,5 +85,60 @@ public class ListOfPlants implements Serializable {
             throw new PlantException("Chyba při zápisu aktualizovaného seznamu do souboru: " + e.getLocalizedMessage());
         }
 
+
+    }
 }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

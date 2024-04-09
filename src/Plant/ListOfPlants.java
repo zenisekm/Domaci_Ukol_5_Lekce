@@ -42,7 +42,7 @@ public class ListOfPlants implements Serializable {
             while (scanner.hasNextLine()) {
                 lineCounter++;
                 String line = scanner.nextLine();
-                String[] parts = line.split(Settings.getDelimiter());
+                String[] parts = line.split("\t");
                 if (parts.length != 5) {
                     throw new PlantException(
                             "Nesprávný počet položek na řádku číslo: " + lineCounter + ": " + line + "!");

@@ -2,7 +2,7 @@ package Plant;
 
 import java.time.LocalDate;
 
-public class Plant {
+public class Plant implements Comparable <Plant> {
 
         private String name;
         private String notes;
@@ -92,8 +92,10 @@ public class Plant {
 
 
 
-
-
+        @Override
+        public  int compareTo(Plant other) {
+            return this.name.compareTo(other.name);
+        }
 
 
 

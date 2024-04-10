@@ -1,0 +1,4 @@
+Fialka 1,Popis fialky - je fialová a hezká,2021-05-12,2021-01-01,3
+Vánoční hvězda bez poznámky,,2021-05-10,2021-04-01,4
+Kaktus,nezalévá se,2023-10-11,2023-10-11,365
+Tulipán,růžové květy,2024-02-02,2024-04-10,2

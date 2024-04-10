@@ -26,13 +26,14 @@ public class Plant {
             this(name, "", LocalDate.now(), LocalDate.now(), frequencyOfWatering);
         }
 
-        public Plant(String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) throws PlantException {
+        public Plant(String name, LocalDate planted, LocalDate watering, int frequencyOfWatering) throws PlantException {
             this.name = name;
-            setNotes(null);
-            setPlanted(LocalDate.now());
-            setWatering(LocalDate.now());
-            setFrequencyOfWatering(7);
+            setNotes("");
+            setPlanted(planted);
+            setWatering(watering);
+            setFrequencyOfWatering(frequencyOfWatering);
         }
+
 
         public String getName() {
             return name;
@@ -87,6 +88,7 @@ public class Plant {
             }
             this.watering = watering;
          }
+
 
 
 

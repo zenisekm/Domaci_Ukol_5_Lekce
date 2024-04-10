@@ -9,11 +9,12 @@ import java.util.List;
 
 public class Methods {
 
-    private static void getWateringInfoFromFile() {
+    public static void getWateringInfoFromFile() {
         String filename = Settings.getFilename();
         ListOfPlants plants = new ListOfPlants();
         try {
             plants.loadDataFromFile(filename);
+            System.out.println("Informace o zálivce:");
             for (Plant plant : plants.getPlantList()) {
                 System.out.println(plant.getWateringInfo());
             }
@@ -26,7 +27,7 @@ public class Methods {
         }
     }
 
-    private static void createNewFile() {
+    public static void createNewFile() {
         String oldFile = Settings.getFilename();
         String newFile = "NoveKvetiny.txt";
 
@@ -50,7 +51,7 @@ public class Methods {
         }
     }
 
-    private static void plantsByName() {
+    public static void plantsByName() {
         String filename = Settings.getFilename();
         ListOfPlants plants = new ListOfPlants();
 
@@ -59,6 +60,7 @@ public class Methods {
             plants.loadDataFromFile(filename);
             List<Plant> sortedPlants = plants.getPlantList();
             Collections.sort(sortedPlants);
+            System.out.println("Rostliny seřazené podle jména:");
             for (Plant plant : sortedPlants) {
                 System.out.println(plant.getWateringInfo());
             }
@@ -67,7 +69,7 @@ public class Methods {
         }
     }
 
-    private static void sortByNameAndFrenquency() {
+    public static void sortByNameAndFrenquency() {
         String filename = Settings.getFilename();
         ListOfPlants plants = new ListOfPlants();
 
@@ -98,7 +100,7 @@ public class Methods {
     }
 
 
-    private static void sortPlantsByLastWatering() {
+    public static void sortPlantsByLastWatering() {
         String filename = Settings.getFilename();
         ListOfPlants plants = new ListOfPlants();
 

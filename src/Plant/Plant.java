@@ -1,6 +1,9 @@
 package Plant;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Plant implements Comparable <Plant> {
 
@@ -10,29 +13,27 @@ public class Plant implements Comparable <Plant> {
         private LocalDate watering;
         private int frequencyOfWatering;
 
-        public Plant (String name, String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) {
-            this.name = name;
-            this.notes = notes;
-            this.planted = planted;
-            this.watering = watering;
-            this.frequencyOfWatering = frequencyOfWatering;
-        }
+       public Plant(String name, String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) {
+           this.name = name;
+           this.notes = notes;
+           this.planted = planted;
+           this.watering = watering;
+           this.frequencyOfWatering = frequencyOfWatering;
+       }
 
-        public Plant(String name) {
-            this(name,"", LocalDate.now(), LocalDate.now(), 7);
-        }
+       public Plant(String name) {
+           this(name, "", LocalDate.now(), LocalDate.now(), 7);
+       }
 
-        public Plant(String name, int frequencyOfWatering) {
-            this(name, "", LocalDate.now(), LocalDate.now(), frequencyOfWatering);
-        }
+       public Plant(String name, int frequencyOfWatering) {
+           this(name, "", LocalDate.now(), LocalDate.now(), frequencyOfWatering);
+       }
 
-        public Plant(String name, LocalDate planted, LocalDate watering, int frequencyOfWatering) throws PlantException {
-            this.name = name;
-            setNotes("");
-            setPlanted(planted);
-            setWatering(watering);
-            setFrequencyOfWatering(frequencyOfWatering);
-        }
+       public Plant(String name, LocalDate planted, LocalDate watering, int frequencyOfWatering) throws PlantException {
+           this(name, "", LocalDate.now(), LocalDate.now(), frequencyOfWatering);
+           setPlanted(planted);
+           setWatering(watering);
+       }
 
 
         public String getName() {
@@ -90,6 +91,36 @@ public class Plant implements Comparable <Plant> {
          }
 
 
+
+    public static void sortPlantsByLastWatering() {
+        String filename = Settings.getFilename();
+        ListOfPlants plants = new ListOfPlants();
+
+        try {
+            plants.loadDataFromFile(filename);
+
+
+            List<Plant> sortedPlants = plants.getPlantList();
+            Collections.sort(sortedPlants, new Plant.LastWateringComparator());
+
+
+            System.out.println("Rostliny seřazené podle data poslední zálivky:");
+            for (Plant plant : sortedPlants) {
+                System.out.println(plant.getWateringInfo());
+            }
+        } catch (PlantException e) {
+            System.err.println("Nastala chyba: " + e.getMessage());
+        }
+    }
+
+    static class LastWateringComparator implements Comparator<Plant> {
+        @Override
+        public int compare(Plant plant1, Plant plant2) {
+            return plant1.getWatering().compareTo(plant2.getWatering());
+
+
+        }
+    }
 
 
         @Override

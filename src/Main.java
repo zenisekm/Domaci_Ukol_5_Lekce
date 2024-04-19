@@ -1,6 +1,8 @@
 import Plant.ListOfPlants;
-import Plant.Methods;
+
 import Plant.Plant;
+
+import java.util.List;
 
 public class Main {
 
@@ -11,15 +13,15 @@ public class Main {
 
 
         System.out.println();
-        Methods.getWateringInfoFromFile();
+        ListOfPlants.getWateringInfoFromFile();
         System.out.println();
-        Methods.plantsByName();
+        ListOfPlants.plantsByName();
         System.out.println();
-        Methods.sortPlantsByLastWatering();
+        Plant.sortPlantsByLastWatering();
         System.out.println();
-        Methods.sortByNameAndFrenquency();
+        ListOfPlants.sortByNameAndFrenquency();
         System.out.println();
-        Methods.createNewFile();
+        ListOfPlants.createNewFile();
 
 
 

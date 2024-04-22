@@ -78,8 +78,10 @@ public class ListOfPlants implements Serializable {
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
             for (Plant plant : plantList) {
                 writer.println(plant.getName() + "\t"
-                        + plant.getNotes() + "\t" + plant.getPlanted() + "\t" + plant.getWatering() + "\t"
-                        + plant.getFrequencyOfWatering());
+                        + plant.getNotes() + "\t"
+                        + plant.getFrequencyOfWatering() + "\t"
+                        + plant.getPlanted() + "\t"
+                        + plant.getWatering());
             }
         } catch (FileNotFoundException e) {
             throw new PlantException("Soubor " + fileName + " nebyl nalezen\n!" + e.getLocalizedMessage());
